@@ -1,36 +1,36 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: helloserver-service
+  name: greenhouse-service
 spec:
   selector:
-    app: helloserver
+    app: greenhouse
   type: NodePort
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 8080
+      targetPort: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-helloserver
+  name: example-greenhouse
   labels:
-    app: helloserver
+    app: greenhouse
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: helloserver
+      app: greenhouse
   template:
     metadata:
       labels:
-        app: helloserver
+        app: greenhouse
     spec:
       imagePullSecrets:
       - name: pipeline-docker-registry
       containers:
-      - name: helloserver
+      - name: maven
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
-        - containerPort: 80
+        - containerPort: 8080
