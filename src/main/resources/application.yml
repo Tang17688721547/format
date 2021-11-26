@@ -1,0 +1,19 @@
+server:
+  port: 9000
+  compression:
+    enabled: true
+    min-response-size: 1024
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+      enabled: false
+callback:
+  url: localhost:86
+
+minio:
+  minio_name: minioadmin
+  minio_pass: minioadmin
+  bucketName: resource
+  minio_url: http://localhost:9000
