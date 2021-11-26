@@ -2,9 +2,8 @@ stages:
 - name: Build
   steps:
   - runScriptConfig:
-      image: maven:3-jdk-7
-      shellScript: |-
-        mvn clean install
+      image: maven:3-jdk-8
+      shellScript: mvn clean install
 - name: Publish
   steps:
   - publishImageConfig:
@@ -15,3 +14,4 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+notification: {}
